@@ -14,9 +14,9 @@ const is = (field, on, off) => props => {
 const colors = {
   primary: '#006cae',
   highlight: '#ffffff',
-  pressed: '#787878',
-  hoverPrimary: '#3389BE',
-  hoverSecondary: '#f1f1f1'
+  pressed: '#3f3f3f',
+  hoverPrimary: '#025b91',
+  hoverSecondary: '#e7e7e7'
 };
 
 const Div = styled.div`
