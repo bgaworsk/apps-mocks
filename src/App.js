@@ -29,6 +29,8 @@ const Div = styled.div`
   
   h1 {
     margin: 30px 0 42px;
+    font-size: 36px;
+    font-weight: 500;
   }
   
   h2 {
@@ -67,8 +69,10 @@ const Div = styled.div`
   }
   
   #tabs {
-    border-bottom: solid 1px #e7e7e7;
+    border-bottom: solid 1px rgba(255,255,255,0.7);
     width: 50vw;
+    font-size: 15px;
+    //padding-bottom: 3px;
   }
   
   #content {  
@@ -100,17 +104,20 @@ const Tabs = styled.ul`
 
   li {
     display: inline-block;
-    padding: 0 6px 12px;   
+    padding: 0 18px 12px;   
     cursor: pointer;
     user-select: none;
+    color: #d2d2d2;
   }
   
   li.active {
-    border-bottom: solid 2px #ffffff;
+    border-bottom: solid 3px #ffffff;
+    font-size: 19px;
+    color: #ffffff;
   }
   
   li + li {
-    margin-left: 48px;
+    margin-left: 36px;
   }
 `;
 
@@ -135,9 +142,9 @@ function App() {
         <div id="tabs">
           <h1>Proof of Concept for Tab Behaviour</h1>
           <Tabs active={tab}>
-            <li onClick={() => setTab(1)} className={classNames({ active: tab ===1 })}>Tab 1</li>
-            <li onClick={() => setTab(2)} className={classNames({ active: tab ===2 })}>Tab 2</li>
-            <li onClick={() => setTab(3)} className={classNames({ active: tab ===3 })}>Tab 3</li>
+            <li onClick={() => setTab(1)} className={classNames({ active: tab ===1 })}>Inbox</li>
+            <li onClick={() => setTab(2)} className={classNames({ active: tab ===2 })}>Pending</li>
+            <li onClick={() => setTab(3)} className={classNames({ active: tab ===3 })}>Archive</li>
           </Tabs>
         </div>
         <div id="content">
