@@ -6,10 +6,13 @@ import flausch from './flauschhoernchen.png'
 import classNames from 'classnames'
 
 const GlobalStyle = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
   body {
     background-image: url(${bgImage});
     margin: 0;
     padding: 0;
+    font-family: 'Roboto', sans-serif;
     color: #fff;
   }
 `
@@ -69,10 +72,9 @@ const Div = styled.div`
   }
   
   #tabs {
-    border-bottom: solid 1px rgba(255,255,255,0.7);
+    border-bottom: solid 1px rgba(255,255,255,1);
     width: 50vw;
     font-size: 15px;
-    //padding-bottom: 3px;
   }
   
   #content {  
@@ -111,7 +113,7 @@ const Tabs = styled.ul`
   }
   
   li.active {
-    border-bottom: solid 3px #ffffff;
+    border-bottom: solid 3px rgba(255,255,255,1);
     font-size: 19px;
     color: #ffffff;
   }
@@ -175,7 +177,7 @@ function App() {
             {tab === 3 && (
               <>
                 <h2>Und ich bin Tab 3, brudi!</h2>
-                <img src={flausch} style={{ width: '50vw'}}/>
+                <img src={flausch} style={{ width: '50vw'}} alt="Flauschhörnchen"/>
                 <div className="shadow">&nbsp;</div>
               </>
             )}
