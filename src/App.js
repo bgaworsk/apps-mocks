@@ -127,6 +127,16 @@ const Tabs = styled.ul`
   }
 `;
 
+const Header = styled.div`
+  height: 56px;
+  background-color: #3f3f3f;
+`;
+
+const Breadcrumbbar = styled.div`
+  height: 36px;
+  background-color: #ffffff;
+`;
+
 function App() {
 
   const [useHover, setUseHover] = React.useState(true)
@@ -144,7 +154,9 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <Div>
+      <Header>&nbsp;</Header>
+      <Breadcrumbbar />
+      <Div>    
         <div id="tabs">
           <h1>Proof of Concept for Tab Behaviour</h1>
           <Tabs active={tab}>
