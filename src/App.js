@@ -4,8 +4,9 @@ import Button from './button'
 import bgImage from './Artboard.png'
 import flausch from './flauschhoernchen.png'
 import classNames from 'classnames'
+import Header from './header'
 
-const width = '1440px';
+const width = '100%';
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
@@ -81,7 +82,7 @@ const Div = styled.div`
   }
 
   img {
-    max-width: 100%;
+    max-width: 60vh;
     text-align: center;
   }
   
@@ -148,12 +149,6 @@ const Tabs = styled.ul`
   }
 `;
 
-const Header = styled.div`
-  min-height: 56px;
-  width: 100%;
-  background-color: #3f3f3f;
-`;
-
 const Breadcrumbbar = styled.div`
   min-height: 36px;
   width: 100%;
@@ -178,7 +173,7 @@ function App() {
     <>
       <GlobalStyle />
       <Div>    
-        <Header>&nbsp;</Header>
+        <Header/>
         <Breadcrumbbar />
         <div className="margin">
           <div id="tabs">
