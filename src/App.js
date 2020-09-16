@@ -74,7 +74,7 @@ const Div = styled.div`
   #tabs {
     border-bottom: solid 1px rgba(255,255,255,1);
     width: 50vw;
-    font-size: 15px;
+    font-size: 17px;
   }
   
   #content {  
@@ -110,11 +110,15 @@ const Tabs = styled.ul`
     cursor: pointer;
     user-select: none;
     color: #d2d2d2;
+
+    &:hover {
+      color: #ffffff;
+    }
   }
   
   li.active {
     border-bottom: solid 3px rgba(255,255,255,1);
-    font-size: 19px;
+    font-size: 17px;
     color: #ffffff;
   }
   
