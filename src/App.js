@@ -5,11 +5,14 @@ import bgImage from './Artboard.png'
 import flausch from './flauschhoernchen.png'
 import classNames from 'classnames'
 
+const width = '1440px';
+
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
   body {
     background-image: url(${bgImage});
+    background-size: cover;
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
@@ -29,6 +32,7 @@ const Div = styled.div`
   font-family: 'Roboto', sans-serif;
   overflow: hidden;
   box-sizing: border-box;
+  padding: 0 12px 0;
   
   h1 {
     margin: 30px 0 42px;
@@ -57,7 +61,8 @@ const Div = styled.div`
   
     background-color: #ffffff;
     border-radius: 4px;
-    width: 50vw;
+    width: 100%;
+    max-width: ${width};
     height: 20vh;
     color: #3f3f3f;
   }
@@ -70,11 +75,17 @@ const Div = styled.div`
     background-color: #3f3f3f;
     color: #ffffff;
   }
+
+  img {
+    max-width: 100%;
+  }
   
   #tabs {
     border-bottom: solid 1px rgba(255,255,255,1);
-    width: 50vw;
+    width: 100%;
+    max-width: ${width};
     font-size: 17px;
+    margin-top: 12px;
   }
   
   #content {  
@@ -83,7 +94,8 @@ const Div = styled.div`
     width: 100%; 
     
     > div {
-      width: 50vw;
+      width: 100%;
+      max-width: ${width};
       margin: auto;
     }
     
@@ -94,7 +106,7 @@ const Div = styled.div`
   
   .shadow {
     margin: auto;
-    width: 30vw;
+    width: 30%;
     height: 20px;     
     background-color: rgba(0,0,0,.3);
     border-radius: 50%/50%;
@@ -103,6 +115,7 @@ const Div = styled.div`
 
 const Tabs = styled.ul`
   margin: 0;
+  padding: 0;
 
   li {
     display: inline-block;
