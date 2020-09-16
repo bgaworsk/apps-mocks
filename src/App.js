@@ -25,15 +25,19 @@ const Div = styled.div`
 
   display: flex;
   align-content: flex-start;
-  align-items: center;
+  align-items: stretch;
   flex-direction: column;
   height: 100vh;
   width:  100vw;
   font-family: 'Roboto', sans-serif;
   overflow: hidden;
   box-sizing: border-box;
-  padding: 0 12px 0;
   
+  .margin {
+    margin: 0 18px;
+    border-bottom: solid 1px rgba(255,255,255,1);
+  } 
+
   h1 {
     margin: 30px 0 42px;
     font-size: 36px;
@@ -78,20 +82,24 @@ const Div = styled.div`
 
   img {
     max-width: 100%;
+    text-align: center;
   }
   
   #tabs {
-    border-bottom: solid 1px rgba(255,255,255,1);
     width: 100%;
     max-width: ${width};
     font-size: 17px;
-    margin-top: 12px;
+    margin: 12px auto 0;
   }
   
-  #content {  
-    padding-top: 24px;
-    overflow-y: scroll;
-    width: 100%; 
+  .content {  
+    padding: 24px 18px 0;
+    overflow-y: scroll;    
+    box-sizing: border-box;
+
+    > .narrow {
+      max-width: 900px;
+    }
     
     > div {
       width: 100%;
@@ -141,12 +149,14 @@ const Tabs = styled.ul`
 `;
 
 const Header = styled.div`
-  height: 56px;
+  min-height: 56px;
+  width: 100%;
   background-color: #3f3f3f;
 `;
 
 const Breadcrumbbar = styled.div`
-  height: 36px;
+  min-height: 36px;
+  width: 100%;
   background-color: #ffffff;
 `;
 
@@ -167,51 +177,59 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <Header>&nbsp;</Header>
-      <Breadcrumbbar />
       <Div>    
-        <div id="tabs">
-          <h1>Proof of Concept for Tab Behaviour</h1>
-          <Tabs active={tab}>
-            <li onClick={() => setTab(1)} className={classNames({ active: tab ===1 })}>Inbox</li>
-            <li onClick={() => setTab(2)} className={classNames({ active: tab ===2 })}>Pending</li>
-            <li onClick={() => setTab(3)} className={classNames({ active: tab ===3 })}>Archive</li>
-          </Tabs>
-        </div>
-        <div id="content">
-          <div>
-            {tab === 1 && (
-              <>
-                <h2>Buttons <input type="checkbox" checked={useHover} onChange={e => setUseHover(e.target.checked)}/><span>Use Hover</span></h2>
-                <div className="card"><ButtonSet/></div>
-                <div className="card"><ButtonSet/></div>
-                <div className="card"><ButtonSet/></div>
-                <div className="card"><ButtonSet/></div>
-                <div className="card"><ButtonSet/></div>
-                <div className="card"><ButtonSet/></div>
-                <div className="card"><ButtonSet/></div>
-                <div className="card"><ButtonSet/></div>
-                <div className="card"><ButtonSet/></div>
-                <div className="card"><ButtonSet/></div>
-              </>
-            )}
-            {tab === 2 && (
-              <>
-                <h2>Ich bin auf Tab 2</h2>
-                <div className="card"><ButtonSet/></div>
-                <div className="card"><ButtonSet/></div>
-                <div className="card"><ButtonSet/></div>
-              </>
-            )}
-            {tab === 3 && (
-              <>
-                <h2>Und ich bin Tab 3, brudi!</h2>
-                <img src={flausch} style={{ width: '50vw'}} alt="Flauschhörnchen"/>
-                <div className="shadow">&nbsp;</div>
-              </>
-            )}
+        <Header>&nbsp;</Header>
+        <Breadcrumbbar />
+        <div className="margin">
+          <div id="tabs">
+            <h1>Proof of Concept for Tab Behaviour</h1>
+            <Tabs active={tab}>
+              <li onClick={() => setTab(1)} className={classNames({ active: tab ===1 })}>Inbox</li>
+              <li onClick={() => setTab(2)} className={classNames({ active: tab ===2 })}>Pending</li>
+              <li onClick={() => setTab(3)} className={classNames({ active: tab ===3 })}>Archive</li>
+            </Tabs>
           </div>
         </div>
+        <>
+        {tab === 1 && (
+          <div className="content">
+            <div>
+              <div className="card"><ButtonSet/></div>
+              <h2>Buttons <input type="checkbox" checked={useHover} onChange={e => setUseHover(e.target.checked)}/><span>Use Hover</span></h2>
+              <div className="card"><ButtonSet/></div>
+              <div className="card"><ButtonSet/></div>
+              <div className="card"><ButtonSet/></div>
+              <div className="card"><ButtonSet/></div>
+              <div className="card"><ButtonSet/></div>
+              <div className="card"><ButtonSet/></div>
+              <div className="card"><ButtonSet/></div>
+              <div className="card"><ButtonSet/></div>
+              <div className="card"><ButtonSet/></div>
+            </div>
+          </div>
+        )}
+        {tab === 2 && (
+          <div className="content">
+            <div className="narrow">
+              <h2>Ich bin auf Tab 2</h2>
+              <div className="card"><ButtonSet/></div>
+              <div className="card"><ButtonSet/></div>
+              <div className="card"><ButtonSet/></div>
+            </div>
+          </div>
+        )}
+        {tab === 3 && (
+          <div className="content">
+            <div className="narrow">
+              <h2>Und ich bin Tab 3, brudi!</h2>
+              <div style={{textAlign: 'center'}}>
+                <img src={flausch} style={{ width: '50vw'}} alt="Flauschhörnchen"/>
+              </div>              
+              <div className="shadow">&nbsp;</div>
+            </div>
+          </div>
+        )}        
+        </>      
       </Div>
     </>
   );
