@@ -3,15 +3,20 @@ import styled from 'styled-components'
 import Arrow from './breadcrumb-arrow-right_16'
 
 const Div = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   min-height: 42px;
   height: 42px;
   width: 100%;
   background-color: #ffffff;
   color: #3f3f3f;
   font-size: 13px;
+  padding: 0 12px 0 21px;
+  box-sizing: border-box;
   
   ul {
-    margin: 13px 0 0 21px;
+    margin: 0;
     padding: 0;
     list-style: none;
     display: flex;
@@ -36,7 +41,7 @@ const Div = styled.div`
   }
 `;
 
-const Breadcrumb = () => {
+const Breadcrumb = ({ children }) => {
   return (
     <Div>
       <ul>
@@ -44,6 +49,9 @@ const Breadcrumb = () => {
         <li className="arrow"><Arrow /></li>
         <li>Bi-weekly Homepage Campaign w/c 3.9. 2020</li>
       </ul>
+      <div>
+        {children}
+      </div>
     </Div>
   )
 }

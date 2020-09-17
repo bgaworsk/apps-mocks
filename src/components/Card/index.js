@@ -7,12 +7,19 @@ const Div = styled.div`
     max-width: 100%;
     color: #3f3f3f;
     padding: 12px 18px 18px 18px;
-    background-color: rgba(255,255,255,.5);
+    background-color: rgba(255,255,255,.7);
     box-sizing: border-box;
     
     &.card + &.card {
       margin-top: 18px;
     } 
+    
+    h2 {
+      margin: 6px 0 24px 0;
+      color: #006cae;
+      font-size: 17px;
+      font-weight: 400;
+    }
 `;
 
 const Card = ({ children, ...props }) => {

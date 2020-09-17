@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     background: radial-gradient(circle at 159% 159%, #53DA9D 0%, #006CAE 100%);
-    background-size: cover;
+    //background-color: #006cae;
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
@@ -84,13 +84,22 @@ function App() {
       <GlobalStyle />
       <Div>    
         <Header/>
-        <Breadcrumb />
+        <Breadcrumb>
+          <Button>Zurücksetzen</Button>
+          <Button primary >Speichern</Button>
+        </Breadcrumb>
         <Tabs tabs={tabs} activeTab={tab} setActiveTab={setTab} />
         <>
         {tab === 0 && (
           <Container>
             <h1 contentEditable={true}>Bi-weekly Homepage Campaign w/c 3.9.2020</h1>
-            <Card><ButtonSet/></Card>
+            <Card>
+              <h2>Card Title</h2>
+              <p>
+                Then some text … why not?
+              </p>
+              <ButtonSet/>
+            </Card>
             <h2>Buttons <input type="checkbox" checked={useHover} onChange={e => setUseHover(e.target.checked)}/><span>Use Hover</span></h2>
             <Card><ButtonSet/></Card>
             <Card><ButtonSet/></Card>

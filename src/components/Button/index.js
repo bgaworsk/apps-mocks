@@ -20,7 +20,9 @@ const colors = {
 };
 
 const Div = styled.div`
-  display: inline-block;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
 
   font-size: 13px;
   height: 32px;
@@ -54,6 +56,9 @@ const Div = styled.div`
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
+    padding: 0 24px;
+    box-sizing: border-box;
     
     &:hover {
       ${is('hover', `background-color: ${colors.hoverSecondary};`, '')}
@@ -64,14 +69,6 @@ const Div = styled.div`
       background-color: ${colors.pressed};
       color: ${colors.highlight};
     }
-  }
-  
-  .label {
-    padding: 0 16px;
-  }
-  
-  .label-split {
-    padding: 0 8px 0 16px;
   }
   
   .split {
