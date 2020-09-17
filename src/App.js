@@ -1,18 +1,19 @@
 import React from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
-import Button from './button'
-import bgImage from './Artboard.png'
-import flausch from './flauschhoernchen.png'
-import classNames from 'classnames'
-import Header from './header'
+import Button from './components/Button'
+import Header from './components/Header'
+import Breadcrumb from './components/Breadcrumb'
+import Card from './components/Card'
+import Tabs from './components/Tabs'
+import Container from './components/Container'
+import Flauschhoernchen from './components/Flauschhoernchen'
 
-const width = '100%';
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
   body {
-    background-image: url(${bgImage});
+    background: radial-gradient(circle at 159% 159%, #53DA9D 0%, #006CAE 100%);
     background-size: cover;
     margin: 0;
     padding: 0;
@@ -34,15 +35,11 @@ const Div = styled.div`
   overflow: hidden;
   box-sizing: border-box;
   
-  .margin {
-    margin: 0 18px;
-    border-bottom: solid 1px rgba(255,255,255,1);
-  } 
-
   h1 {
     margin: 30px 0 42px;
     font-size: 36px;
     font-weight: 400;
+    cursor:  text;
   }
   
   h2 {
@@ -57,108 +54,19 @@ const Div = styled.div`
       font-size: 13px;
     }
   }
-  
-  .card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    grid-gap: 12px;
-  
-    background-color: #ffffff;
-    border-radius: 4px;
-    width: 100%;
-    max-width: ${width};
-    height: 20vh;
-    color: #3f3f3f;
-  }
-  
-  .card:nth-child(2) {
-    background-color: #bcbcbc;
-  }
-  
-  .card:last-child {
-    background-color: #3f3f3f;
-    color: #ffffff;
-  }
 
   img {
     max-width: 60vh;
     text-align: center;
   }
-  
-  #tabs {
-    width: 100%;
-    max-width: ${width};
-    font-size: 17px;
-    margin: 12px auto 0;
-  }
-  
-  .content {  
-    padding: 24px 18px 0;
-    overflow-y: scroll;    
-    box-sizing: border-box;
-
-    > .narrow {
-      max-width: 900px;
-    }
-    
-    > div {
-      width: 100%;
-      max-width: ${width};
-      margin: auto;
-    }
-    
-    .card + .card {
-      margin-top: 18px;
-    } 
-  }
-  
-  .shadow {
-    margin: auto;
-    width: 30%;
-    height: 20px;     
-    background-color: rgba(0,0,0,.3);
-    border-radius: 50%/50%;
-  }
 `;
 
-const Tabs = styled.ul`
-  margin: 0;
-  padding: 0;
 
-  li {
-    display: inline-block;
-    padding: 0 18px 12px;   
-    cursor: pointer;
-    user-select: none;
-    color: #d2d2d2;
-
-    &:hover {
-      color: #ffffff;
-    }
-  }
-  
-  li.active {
-    border-bottom: solid 3px rgba(255,255,255,1);
-    font-size: 17px;
-    color: #ffffff;
-  }
-  
-  li + li {
-    margin-left: 36px;
-  }
-`;
-
-const Breadcrumbbar = styled.div`
-  min-height: 36px;
-  width: 100%;
-  background-color: #ffffff;
-`;
 
 function App() {
 
   const [useHover, setUseHover] = React.useState(true)
-  const [tab, setTab] = React.useState(1);
+  const [tab, setTab] = React.useState(0);
 
   const ButtonSet = ({ onDark }) => (
     <>
@@ -169,60 +77,53 @@ function App() {
     </>
   );
 
+  const tabs = [ 'Details', 'Content', 'Scheduling', 'Metadata' ];
+
   return (
     <>
       <GlobalStyle />
       <Div>    
         <Header/>
-        <Breadcrumbbar />
-        <div className="margin">
-          <div id="tabs">
-            <h1>Proof of Concept for Tab Behaviour</h1>
-            <Tabs active={tab}>
-              <li onClick={() => setTab(1)} className={classNames({ active: tab ===1 })}>Inbox</li>
-              <li onClick={() => setTab(2)} className={classNames({ active: tab ===2 })}>Pending</li>
-              <li onClick={() => setTab(3)} className={classNames({ active: tab ===3 })}>Archive</li>
-            </Tabs>
-          </div>
-        </div>
+        <Breadcrumb />
+        <Tabs tabs={tabs} activeTab={tab} setActiveTab={setTab} />
         <>
+        {tab === 0 && (
+          <Container>
+            <h1 contentEditable={true}>Bi-weekly Homepage Campaign w/c 3.9.2020</h1>
+            <Card><ButtonSet/></Card>
+            <h2>Buttons <input type="checkbox" checked={useHover} onChange={e => setUseHover(e.target.checked)}/><span>Use Hover</span></h2>
+            <Card><ButtonSet/></Card>
+            <Card><ButtonSet/></Card>
+            <Card><ButtonSet/></Card>
+            <Card><ButtonSet/></Card>
+            <Card><ButtonSet/></Card>
+            <Card><ButtonSet/></Card>
+            <Card><ButtonSet/></Card>
+            <Card><ButtonSet/></Card>
+            <Card><ButtonSet/></Card>
+          </Container>
+        )}
         {tab === 1 && (
-          <div className="content">
-            <div>
-              <div className="card"><ButtonSet/></div>
-              <h2>Buttons <input type="checkbox" checked={useHover} onChange={e => setUseHover(e.target.checked)}/><span>Use Hover</span></h2>
-              <div className="card"><ButtonSet/></div>
-              <div className="card"><ButtonSet/></div>
-              <div className="card"><ButtonSet/></div>
-              <div className="card"><ButtonSet/></div>
-              <div className="card"><ButtonSet/></div>
-              <div className="card"><ButtonSet/></div>
-              <div className="card"><ButtonSet/></div>
-              <div className="card"><ButtonSet/></div>
-              <div className="card"><ButtonSet/></div>
-            </div>
-          </div>
+          <Container narrow>
+            <Card><ButtonSet/></Card>
+            <h2>Ich bin auf Tab 2</h2>
+            <Card><ButtonSet/></Card>
+            <Card><ButtonSet/></Card>
+            <Card><ButtonSet/></Card>
+            <Card><ButtonSet/></Card>
+            <Card><ButtonSet/></Card>
+            <Card><ButtonSet/></Card>
+            <Card><ButtonSet/></Card>
+            <Card><ButtonSet/></Card>
+          </Container>
         )}
         {tab === 2 && (
-          <div className="content">
-            <div className="narrow">
-              <h2>Ich bin auf Tab 2</h2>
-              <div className="card"><ButtonSet/></div>
-              <div className="card"><ButtonSet/></div>
-              <div className="card"><ButtonSet/></div>
-            </div>
-          </div>
-        )}
-        {tab === 3 && (
-          <div className="content">
-            <div className="narrow">
-              <h2>Und ich bin Tab 3, brudi!</h2>
-              <div style={{textAlign: 'center'}}>
-                <img src={flausch} style={{ width: '50vw'}} alt="Flauschhörnchen"/>
-              </div>              
-              <div className="shadow">&nbsp;</div>
-            </div>
-          </div>
+          <Container narrow>
+            <h1>Und ich bin Tab 3, brudi!</h1>
+            <Card>
+              <Flauschhoernchen />
+            </Card>
+          </Container>
         )}        
         </>      
       </Div>
