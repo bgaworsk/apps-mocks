@@ -9,7 +9,7 @@ const Div = styled.div`
     margin: auto;
     width: 30%;
     height: 20px;     
-    background-color: rgba(0,0,0,.3);
+    background-color: rgba(0,0,0,.1);
     border-radius: 50%/50%;
   }
 `;

@@ -7,6 +7,7 @@ import Card from './components/Card'
 import Tabs from './components/Tabs'
 import Container from './components/Container'
 import Flauschhoernchen from './components/Flauschhoernchen'
+import TableCard from './components/TableCard'
 
 
 const GlobalStyle = createGlobalStyle`
@@ -45,6 +46,8 @@ const Div = styled.div`
   h2 {
     display: flex;
     align-items: center;
+    font-weight: 400;
+    margin: 36px 0 18px; 
   
     input {
       margin-left: 24px;
@@ -60,8 +63,6 @@ const Div = styled.div`
     text-align: center;
   }
 `;
-
-
 
 function App() {
 
@@ -86,6 +87,13 @@ function App() {
           <Button primary >Speichern</Button>
         </Breadcrumb>
         <Tabs>
+          <Container tabName="Inbox" narrow>
+            <h1>Inbox</h1>
+            <h2>Localization Workflows (3)</h2>
+            <TableCard length={3}/>
+            <h2>Publication Workflows (10)</h2>
+            <TableCard length={10}/>
+          </Container>
           <Container tabName="Details">
             <h1 contentEditable={true}>Bi-weekly Homepage Campaign w/c 3.9.2020</h1>
             <Card>

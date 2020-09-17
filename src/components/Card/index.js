@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import classNames from 'classnames'
 
 const Div = styled.div`
     border-radius: 8px;
@@ -7,8 +8,14 @@ const Div = styled.div`
     max-width: 100%;
     color: #3f3f3f;
     padding: 12px 18px 18px 18px;
-    background-color: rgba(255,255,255,.7);
+    //background-color: rgba(255,255,255, .8);
+    //background-color: #e7e7e7;
+    background-color: #ffffff;
     box-sizing: border-box;
+    
+    &.table {
+      padding: 12px 0;
+    }
     
     &.card + &.card {
       margin-top: 18px;
@@ -22,9 +29,9 @@ const Div = styled.div`
     }
 `;
 
-const Card = ({ children, ...props }) => {
+const Card = ({ table, children, height, ...props }) => {
   return (
-    <Div className="card" {...props}>
+    <Div className={classNames('card', { table })} {...props} style={{ height: `${height}px`}}>
       {children}
     </Div>
   )

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import classnames from 'classnames'
 
 const Div = styled.div`
-    padding: 24px 18px 0;
+    padding: 24px 18px;
     overflow-y: scroll;    
     box-sizing: border-box;
 
