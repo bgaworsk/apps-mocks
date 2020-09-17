@@ -66,7 +66,6 @@ const Div = styled.div`
 function App() {
 
   const [useHover, setUseHover] = React.useState(true)
-  const [tab, setTab] = React.useState(0);
 
   const ButtonSet = ({ onDark }) => (
     <>
@@ -77,8 +76,6 @@ function App() {
     </>
   );
 
-  const tabs = [ 'Details', 'Content', 'Scheduling', 'Metadata' ];
-
   return (
     <>
       <GlobalStyle />
@@ -88,10 +85,8 @@ function App() {
           <Button>Zurücksetzen</Button>
           <Button primary >Speichern</Button>
         </Breadcrumb>
-        <Tabs tabs={tabs} activeTab={tab} setActiveTab={setTab} />
-        <>
-        {tab === 0 && (
-          <Container>
+        <Tabs>
+          <Container tabName="Details">
             <h1 contentEditable={true}>Bi-weekly Homepage Campaign w/c 3.9.2020</h1>
             <Card>
               <h2>Card Title</h2>
@@ -111,9 +106,7 @@ function App() {
             <Card><ButtonSet/></Card>
             <Card><ButtonSet/></Card>
           </Container>
-        )}
-        {tab === 1 && (
-          <Container narrow>
+          <Container tabName="Content" narrow>
             <Card><ButtonSet/></Card>
             <h2>Ich bin auf Tab 2</h2>
             <Card><ButtonSet/></Card>
@@ -125,16 +118,13 @@ function App() {
             <Card><ButtonSet/></Card>
             <Card><ButtonSet/></Card>
           </Container>
-        )}
-        {tab === 2 && (
-          <Container narrow>
+          <Container tabName="Scheduling" narrow>
             <h1>Und ich bin Tab 3, brudi!</h1>
             <Card>
               <Flauschhoernchen />
             </Card>
           </Container>
-        )}        
-        </>      
+        </Tabs>
       </Div>
     </>
   );

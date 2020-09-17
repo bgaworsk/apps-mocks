@@ -13,9 +13,7 @@
     <list default="true" id="ebbd5c47-c732-460d-b44f-d070fafd54f2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Breadcrumb/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Breadcrumb/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Button/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Button/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Card/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Card/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Tabs/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Tabs/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +108,7 @@
       <workItem from="1598007121522" duration="248000" />
       <workItem from="1600199981789" duration="3148000" />
       <workItem from="1600237218933" duration="2130000" />
-      <workItem from="1600326672379" duration="15312000" />
+      <workItem from="1600326672379" duration="16087000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1597864224067</created>
@@ -196,7 +194,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600361010082</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Fixed buttons and added buttons to breaadcrumb">
+      <created>1600362115781</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1600362115781</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,7 +230,8 @@
     <MESSAGE value="Refactoring" />
     <MESSAGE value="Refactoring and clean-up" />
     <MESSAGE value="Fixed shadow" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed shadow" />
+    <MESSAGE value="Fixed buttons and added buttons to breaadcrumb" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed buttons and added buttons to breaadcrumb" />
   </component>
   <component name="WindowStateProjectService">
     <state x="822" y="493" key="#ESLint" timestamp="1597856806333">
@@ -268,9 +274,10 @@
     <state width="1413" height="317" key="GridCell.Tab.0.right/0.23.3200.1740/3200.1042.1680.1050@0.23.3200.1740" timestamp="1600240126841" />
     <state width="1878" height="278" key="GridCell.Tab.0.right/0.23.3200.1741/-1680.1173.1680.1050@0.23.3200.1741" timestamp="1598014973480" />
     <state width="1638" height="317" key="GridCell.Tab.0.right/0.23.3360.1830/-1680.1052.1680.1050@0.23.3360.1830" timestamp="1600358558322" />
-    <state width="876" height="715" key="SwitcherDM" timestamp="1600361754214">
-      <screen x="0" y="23" width="3360" height="1830" />
+    <state width="501" height="446" key="SwitcherDM" timestamp="1600365385916">
+      <screen x="0" y="23" width="1920" height="1140" />
     </state>
+    <state width="501" height="446" key="SwitcherDM/0.23.1920.1140@0.23.1920.1140" timestamp="1600365385916" />
     <state width="500" height="445" key="SwitcherDM/0.23.1920.1141@0.23.1920.1141" timestamp="1597867251256" />
     <state width="834" height="679" key="SwitcherDM/0.23.3200.1740/3200.1042.1680.1050@0.23.3200.1740" timestamp="1600200324558" />
     <state width="876" height="715" key="SwitcherDM/0.23.3360.1830/-1680.1052.1680.1050@0.23.3360.1830" timestamp="1600361754214" />

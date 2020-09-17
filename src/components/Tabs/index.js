@@ -47,17 +47,26 @@ const Div = styled.div`
   }
 `;
 
-const Tabs = ({ tabs, activeTab, setActiveTab }) => {
+const Tabs = ({ children }) => {
+
+  const [activeTab, setActiveTab] = React.useState(0);
+
+  const tabs = children.map(child => child.props.tabName);
+  const child =  children[activeTab];
+
   return (
-    <Div>
-      <div>
-        <ul>
-          {tabs.map((tab, index) => (
-            <li key={index} onClick={() => setActiveTab(index)} className={classNames({ active: activeTab === index })}>{tab}</li>
-          ))}
-        </ul>
-      </div>
-    </Div>
+    <>
+      <Div>
+        <div>
+          <ul>
+            {tabs.map((tab, index) => (
+              <li key={index} onClick={() => setActiveTab(index)} className={classNames({ active: activeTab === index })}>{tab}</li>
+            ))}
+          </ul>
+        </div>
+      </Div>
+      <>{child}</>
+    </>
   )
 }
 
