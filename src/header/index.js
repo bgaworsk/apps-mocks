@@ -12,8 +12,20 @@ const Div = styled.div`
     background-color: #3f3f3f;
 
     img {
-        margin: 18px 14px;
+        margin: 14px 12px 0 18px;
         cursor: pointer;
+    }
+    
+    .bar {
+      display: flex;
+      flex-direction: row;
+      
+      .app-name {
+        font-size: 15px;
+        font-weight: 400;
+        margin-top: 17px;
+        
+      }
     }
 
     #sidebar {
@@ -92,8 +104,8 @@ const Sidebar = ({closeSidebar, spring, ...props}) => (
 
 const Header = () => {
 
-  const [sidebar, toggleSidebar] = React.useState(true);
-  const [hidden, toggleHidden] = React.useState(false);
+  const [sidebar, toggleSidebar] = React.useState(false);
+  const [hidden, toggleHidden] = React.useState(true);
 
   const showSidebar = () => {
     toggleHidden(false);
@@ -105,21 +117,14 @@ const Header = () => {
     toggleHidden(true);
   }
 
-  const onRest = ({spring}) => {
-    console.log('waa');
-    if (!sidebar) {
-
-    }
-  }
-
-  const spring = useSpring({
-    to: {left: sidebar ? 0 : -260},
-    onRest
-  });
+  const spring = useSpring({left: sidebar ? 0 : -260});
 
   return (
     <Div>
-      <img src={burgerIcon} alt="Open Burger Menu" onClick={showSidebar}/>
+      <div className="bar">
+        <img src={burgerIcon} alt="Open Burger Menu" onClick={showSidebar}/>
+        <div className="app-name">Marketing</div>
+      </div>
       <Sidebar closeSidebar={hideSidebar} className={classNames({hidden: hidden})} spring={spring}/>
     </Div>
   )
