@@ -42,7 +42,7 @@ const Div = styled.div`
   h1 {
     margin: 30px 0 42px;
     font-size: 36px;
-    font-weight: 500;
+    font-weight: 400;
   }
   
   h2 {
