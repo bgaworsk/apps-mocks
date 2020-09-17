@@ -22,6 +22,10 @@ const SidebarContainer = styled(animated.div)`
       > div:last-child {
         width: 0;
       }
+      
+      > div:first-child {
+      box-shadow: none;
+      }
     }
 
     > div:first-child {
@@ -48,7 +52,6 @@ const SidebarContainer = styled(animated.div)`
           font-size: 24px;
           font-weight: 400;
       }
-      
       
       svg {
         width: 32px;

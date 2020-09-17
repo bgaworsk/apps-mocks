@@ -11,10 +11,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ebbd5c47-c732-460d-b44f-d070fafd54f2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Sidebar/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Card/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Card/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +106,7 @@
       <workItem from="1598007121522" duration="248000" />
       <workItem from="1600199981789" duration="3148000" />
       <workItem from="1600237218933" duration="2130000" />
-      <workItem from="1600326672379" duration="13698000" />
+      <workItem from="1600326672379" duration="14207000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1597864224067</created>
@@ -181,7 +178,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600358704794</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Refactoring and clean-up">
+      <created>1600360543856</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1600360543856</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,7 +212,8 @@
     <MESSAGE value="Sidebar mock" />
     <MESSAGE value="App Name" />
     <MESSAGE value="Refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactoring" />
+    <MESSAGE value="Refactoring and clean-up" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactoring and clean-up" />
   </component>
   <component name="WindowStateProjectService">
     <state x="822" y="493" key="#ESLint" timestamp="1597856806333">
