@@ -75,19 +75,15 @@ function App() {
           <Button>Zurücksetzen</Button>
           <Button primary >Speichern</Button>
         </Breadcrumb>
-        <Tabs initialTab={3}>
+        <Tabs initialTab={0}>
           <Container tabName="Inbox" narrow>
             <h1>Inbox</h1>
-            <h2>Localization Workflows (3)</h2>
             <TableCard length={3}/>
-            <h2>Publication Workflows (10)</h2>
             <TableCard length={10}/>
           </Container>
           <Container tabName="Inbox Full Width">
             <h1>Inbox</h1>
-            <h2>Localization Workflows (3)</h2>
             <TableCard length={3}/>
-            <h2>Publication Workflows (10)</h2>
             <TableCard length={10}/>
           </Container>
           <Container tabName="Campaign">

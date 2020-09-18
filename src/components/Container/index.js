@@ -6,6 +6,7 @@ const Div = styled.div`
     padding: 24px 18px;
     overflow-y: scroll;    
     box-sizing: border-box;
+    flex-grow: 2;
 
     h1 {
       margin: 30px 0 42px;

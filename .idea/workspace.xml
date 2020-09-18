@@ -11,30 +11,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ebbd5c47-c732-460d-b44f-d070fafd54f2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Toolbar/icons/copy_24.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Toolbar/icons/create-content_24.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Toolbar/icons/create-new-folder_24.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Toolbar/icons/cut_24.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Toolbar/icons/paste_24.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Toolbar/icons/pencil_24.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Toolbar/icons/star_24.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Toolbar/icons/start-localization-workflow_24.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Toolbar/icons/start-publication-workflow_24.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Toolbar/icons/trash-bin_24.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Toolbar/icons/upload_24.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Toolbar/icons/withdraw_24.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Toolbar/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/TableCard/remove-small.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/TableCard/up-and-down-arrows-triangles-svgrepo-com.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Button/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Button/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Card/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Card/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Container/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Container/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Flauschhoernchen/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Flauschhoernchen/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/TableCard/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TableCard/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Tabs/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Tabs/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TableCard/search_16.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TableCard/search_16.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +40,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Toolbar/icons" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/TableCard" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -82,9 +65,9 @@
       <recent name="$PROJECT_DIR$/src" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/TableCard" />
       <recent name="$PROJECT_DIR$/src/components/Toolbar/icons" />
       <recent name="$PROJECT_DIR$/src/components/Toolbar" />
-      <recent name="$PROJECT_DIR$/src/components/TableCard" />
       <recent name="$PROJECT_DIR$/src/breacrumb" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
@@ -144,7 +127,7 @@
       <workItem from="1600199981789" duration="3148000" />
       <workItem from="1600237218933" duration="2130000" />
       <workItem from="1600326672379" duration="22586000" />
-      <workItem from="1600411996574" duration="11409000" />
+      <workItem from="1600411996574" duration="17635000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1597864224067</created>
@@ -258,7 +241,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600413413003</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Toolbar">
+      <created>1600457141887</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1600457141887</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -291,7 +281,8 @@
     <MESSAGE value="cool tabs" />
     <MESSAGE value="table table" />
     <MESSAGE value="Fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixes" />
+    <MESSAGE value="Toolbar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Toolbar" />
   </component>
   <component name="WindowStateProjectService">
     <state x="822" y="493" key="#ESLint" timestamp="1597856806333">
@@ -334,23 +325,25 @@
     <state width="1558" height="317" key="GridCell.Tab.0.right/0.23.3200.1740/3200.1042.1680.1050@0.23.3200.1740" timestamp="1600416254530" />
     <state width="1878" height="278" key="GridCell.Tab.0.right/0.23.3200.1741/-1680.1173.1680.1050@0.23.3200.1741" timestamp="1598014973480" />
     <state width="1638" height="317" key="GridCell.Tab.0.right/0.23.3360.1830/-1680.1052.1680.1050@0.23.3360.1830" timestamp="1600358558322" />
-    <state width="1002" height="822" key="SwitcherDM" timestamp="1600456230951">
+    <state width="1002" height="822" key="SwitcherDM" timestamp="1600463101003">
       <screen x="0" y="23" width="3840" height="2100" />
     </state>
     <state width="501" height="446" key="SwitcherDM/0.23.1920.1140@0.23.1920.1140" timestamp="1600451236321" />
     <state width="500" height="445" key="SwitcherDM/0.23.1920.1141@0.23.1920.1141" timestamp="1597867251256" />
     <state width="834" height="679" key="SwitcherDM/0.23.3200.1740/3200.1042.1680.1050@0.23.3200.1740" timestamp="1600416688816" />
     <state width="876" height="715" key="SwitcherDM/0.23.3360.1830/-1680.1052.1680.1050@0.23.3360.1830" timestamp="1600361754214" />
-    <state width="1002" height="822" key="SwitcherDM/0.23.3840.2100/-1680.1439.1680.1050@0.23.3840.2100" timestamp="1600456230951" />
+    <state width="1002" height="822" key="SwitcherDM/0.23.3840.2100/-1680.1439.1680.1050@0.23.3840.2100" timestamp="1600457214802" />
+    <state width="1002" height="822" key="SwitcherDM/0.23.3840.2100/3840.1379.1680.1050@0.23.3840.2100" timestamp="1600463101003" />
     <state x="400" y="632" key="Vcs.Push.Dialog.v2" timestamp="1600413539815">
       <screen x="0" y="23" width="3200" height="1740" />
     </state>
     <state x="400" y="632" key="Vcs.Push.Dialog.v2/0.23.3200.1740/3200.1042.1680.1050@0.23.3200.1740" timestamp="1600413539815" />
-    <state x="365" y="543" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1600451204273">
-      <screen x="0" y="23" width="1920" height="1140" />
+    <state x="730" y="981" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1600460074495">
+      <screen x="0" y="23" width="3840" height="2100" />
     </state>
     <state x="365" y="543" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1920.1140@0.23.1920.1140" timestamp="1600451204273" />
     <state x="638" y="858" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.3360.1830/-1680.1052.1680.1050@0.23.3360.1830" timestamp="1600341135798" />
+    <state x="730" y="981" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.3840.2100/3840.1379.1680.1050@0.23.3840.2100" timestamp="1600460074495" />
     <state x="498" y="348" width="604" height="490" key="find.popup" timestamp="1600451222470">
       <screen x="0" y="23" width="1920" height="1140" />
     </state>
@@ -359,10 +352,11 @@
       <screen x="0" y="23" width="1920" height="1140" />
     </state>
     <state x="503" y="276" key="run.anything.popup/0.23.1920.1140@0.23.1920.1140" timestamp="1600327455133" />
-    <state x="625" y="279" width="670" height="676" key="search.everywhere.popup" timestamp="1600450320654">
-      <screen x="0" y="23" width="1920" height="1140" />
+    <state x="1250" y="495" width="1340" height="1246" key="search.everywhere.popup" timestamp="1600461177167">
+      <screen x="0" y="23" width="3840" height="2100" />
     </state>
     <state x="625" y="279" width="670" height="676" key="search.everywhere.popup/0.23.1920.1140@0.23.1920.1140" timestamp="1600450320654" />
     <state x="625" y="279" width="670" height="676" key="search.everywhere.popup/0.23.1920.1141@0.23.1920.1141" timestamp="1597867609826" />
+    <state x="1250" y="495" width="1340" height="1246" key="search.everywhere.popup/0.23.3840.2100/3840.1379.1680.1050@0.23.3840.2100" timestamp="1600461177167" />
   </component>
 </project>
