@@ -234,10 +234,9 @@ const More = () => {
   )
 }
 
-const TextSearch = () => {
+const TextSearch = ({ searchTerm, setSearchTerm }) => {
 
   const [expanded, toggle] = React.useState(false);
-  const [search, setSearch] = React.useState('');
   const input = React.useRef();
 
   React.useEffect(() => {
@@ -248,11 +247,11 @@ const TextSearch = () => {
 
   const close = () => {
     toggle(false);
-    setSearch('');
+    setSearchTerm('');
   }
 
   const handleChange = event => {
-    setSearch(event.target.value);
+    setSearchTerm(event.target.value);
   }
 
   const handleExit = event => {
@@ -265,26 +264,42 @@ const TextSearch = () => {
     <SearchContainer>
       <div className={classNames('field', { expanded })}>
         <SearchIcon onClick={() => toggle(true)}/>
-        <input type="text" placeholder="Search …" value={search} onChange={handleChange} ref={input} onKeyDown={handleExit}/>
+        <input type="text" placeholder="Search …" value={searchTerm} onChange={handleChange} ref={input} onKeyDown={handleExit}/>
         <Remove onClick={close} />
       </div>
     </SearchContainer>
   )
 }
 
-const TableCard = ({ length }) => {
+const TableCard = ({ length, type = 0 }) => {
 
-  shuffle(mockData);
-  const data = mockData.slice(0, length);
+  const [data, setData] = React.useState();
+  const [filteredData, setFilteredData] = React.useState();
+  const [searchTerm, setSearchTerm] = React.useState('');
+
+  React.useEffect(() => {
+    shuffle(mockData);
+    let slice = mockData.slice(0, length)
+    setData(slice);
+    setFilteredData(slice);
+  }, [length]);
+
+  React.useEffect(() => {
+    if (searchTerm === '') {
+      setFilteredData(data);
+    } else {
+      setFilteredData(data.filter(datum => datum.name.includes(searchTerm)));
+    }
+  }, [searchTerm, data]);
 
   return (
     <Card table>
       <Div>
         <div className="title">
-          <h2>Localization Workflows</h2>
-          <TextSearch />
+          <h2>{type === 0 ? 'Localization' : 'Publication'} Workflows</h2>
+          <TextSearch searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
         </div>
-        <Table>
+        {filteredData && <Table>
           <thead>
             <tr>
               <th>Name <Arrow /></th>
@@ -294,16 +309,19 @@ const TableCard = ({ length }) => {
             </tr>
           </thead>
           <tbody>
-          {data.map((datum, index) => (
+          {filteredData.map((datum, index) => (
             <tr key={index}>
-              <td>{datum.name}</td>
-              <td>{datum.type}</td>
-              <td>{datum.status}</td>
+              <td>
+                <strong style={{fontSize: '17px'}}>{datum.name}</strong><br/>
+                Started by {datum.started_by}
+              </td>
+              <td>{type === 0 ? datum.type_localization : datum.type_publication}</td>
+              <td>{type === 0 ? datum.status_publication : datum.status_publication}</td>
               <td><More /></td>
             </tr>
           ))}
           </tbody>
-        </Table>
+        </Table>}
       </Div>
     </Card>
   )

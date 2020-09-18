@@ -79,12 +79,12 @@ function App() {
           <Container tabName="Inbox" narrow>
             <h1>Inbox</h1>
             <TableCard length={3}/>
-            <TableCard length={10}/>
+            <TableCard length={10} type={1}/>
           </Container>
           <Container tabName="Inbox Full Width">
             <h1>Inbox</h1>
             <TableCard length={3}/>
-            <TableCard length={10}/>
+            <TableCard length={10} type={1}/>
           </Container>
           <Container tabName="Campaign">
             <h1 contentEditable={true}>Bi-weekly Homepage Campaign w/c 3.9.2020</h1>

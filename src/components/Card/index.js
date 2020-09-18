@@ -17,6 +17,8 @@ const Div = styled.div`
     background-color: #ffffff;
     box-sizing: border-box;
     
+    transition: height 200ms ease-in-out;
+    
     &.table {
       padding: 12px 0;
     }
