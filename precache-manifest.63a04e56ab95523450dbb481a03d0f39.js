@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b8496850e59a68023d8c1499a9aeed8b",
+    "revision": "4bc22dec05000c141538fb7d662e5399",
     "url": "/apps-mocks/index.html"
   },
   {
-    "revision": "067568e1000abd4d3be7",
-    "url": "/apps-mocks/static/js/2.86266b4f.chunk.js"
+    "revision": "090cd0ccb59ee79f6621",
+    "url": "/apps-mocks/static/js/2.a0c82bb7.chunk.js"
   },
   {
     "revision": "3453b8997016469371284a28c0e873e2",
-    "url": "/apps-mocks/static/js/2.86266b4f.chunk.js.LICENSE.txt"
+    "url": "/apps-mocks/static/js/2.a0c82bb7.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "03f28a4146811086c41f",
-    "url": "/apps-mocks/static/js/main.c1dbc60a.chunk.js"
+    "revision": "2afce380ecbbe44afae5",
+    "url": "/apps-mocks/static/js/main.5146b788.chunk.js"
   },
   {
     "revision": "18b087c5e91182f08176",
@@ -26,9 +26,5 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "c0dea19cf9fd8b028e2f333201de96ee",
     "url": "/apps-mocks/static/media/flauschhoernchen.c0dea19c.png"
-  },
-  {
-    "revision": "bf637da490f87bea20c76075e9deafb8",
-    "url": "/apps-mocks/static/media/search_16.bf637da4.svg"
   }
 ]);
