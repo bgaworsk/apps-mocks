@@ -97,7 +97,7 @@ function App() {
           <Container tabName="Details">
             <h1 contentEditable={true}>Bi-weekly Homepage Campaign w/c 3.9.2020</h1>
             <Card>
-              <h2>Card Title</h2>
+              <h2 className="title">Card Title</h2>
               <p>
                 Then some text … why not?
               </p>

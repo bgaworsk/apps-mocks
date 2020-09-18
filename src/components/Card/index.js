@@ -26,6 +26,10 @@ const Div = styled.div`
       color: #006cae;
       font-size: 17px;
       font-weight: 400;
+      
+      &.title {
+        margin: 6px 0 24px 0;
+      }
     }
 `;
 

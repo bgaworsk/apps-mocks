@@ -8,17 +8,21 @@ import searchIcon from './search_16.svg'
 
 const Div = styled.div`
 
+  .filter {
+    text-align: center;
+  }
+
   .field {
     position: relative;
     
     input {
       background-color: #ffffff;
       height: 24px;
-      border-radius: 4px;
-      width: 34%;
+      border-radius: 24px;
+      width: 70%;
       border: none;
       font-size: 13px;
-      margin-bottom: 12px;
+      margin-bottom: 6px;
       padding-left: 28px;
       box-sizing: border-box;
       
@@ -145,9 +149,11 @@ const TableCard = ({ length }) => {
 
   return (
     <Div>
-      <div className="field">
-        <img src={searchIcon} alt="Search" />
-        <input type="text" placeholder="Search …" value={search} onChange={e => setSearch(e.target.value)}/>
+      <div className="filter">
+        <div className="field">
+          <img src={searchIcon} alt="Search" />
+          <input type="text" placeholder="Search …" value={search} onChange={e => setSearch(e.target.value)}/>
+        </div>
       </div>
       <Card table height={565}>
         <Table>
