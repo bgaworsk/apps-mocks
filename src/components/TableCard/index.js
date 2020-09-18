@@ -8,8 +8,34 @@ import searchIcon from './search_16.svg'
 
 const Div = styled.div`
 
+  button {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    color: #767676;
+    border-radius: 24px;
+    opacity: 0;
+    
+    &:hover {
+      background-color: rgba(0,0,0,.1);
+      color: #3f3f3f;
+    }
+    
+    &:focus {
+      outline: none;
+    }
+    
+    &.pressed {
+      background-color: #3f3f3f;
+      color: #ffffff;
+    }
+  } 
+
   .filter {
-    text-align: center;
+    text-align: left;
   }
 
   .field {
@@ -18,13 +44,13 @@ const Div = styled.div`
     input {
       background-color: #ffffff;
       height: 24px;
-      border-radius: 24px;
+      border-radius: 8px;
       width: 70%;
       border: none;
       font-size: 13px;
-      margin-bottom: 6px;
+      margin: 0 0 6px -16px;
       padding-left: 28px;
-      box-sizing: border-box;
+      box-sizing: border-box;      
       
       &:focus {
         outline: none;
@@ -33,7 +59,7 @@ const Div = styled.div`
     
     img {
       position: relative;
-      left: 21px;
+      left:   6px;
       top: 3px;
       
       width: 16px;     
@@ -90,32 +116,6 @@ const Table = styled.table`
           width: 16px;
           height: 16px;
         }
-        
-        button {
-          cursor: pointer;
-          border: none;
-          background-color: transparent;
-          width: 24px;
-          height: 24px;
-          padding: 0;
-          color: #868686;
-          border-radius: 4px;
-          opacity: 0;
-          
-          &:hover {
-            background-color: rgba(0,0,0,.1);
-            color: #3f3f3f;
-          }
-          
-          &:focus {
-            outline: none;
-          }
-          
-          &.pressed {
-            background-color: #3f3f3f;
-            color: #ffffff;
-          }
-        } 
       }
     }
     

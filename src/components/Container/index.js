@@ -7,6 +7,13 @@ const Div = styled.div`
     overflow-y: scroll;    
     box-sizing: border-box;
 
+    h1 {
+      margin: 30px 0 42px;
+      font-size: 36px;
+      font-weight: 400;
+      cursor:  text;
+    }
+
     > .narrow {
       max-width: 900px;
     }

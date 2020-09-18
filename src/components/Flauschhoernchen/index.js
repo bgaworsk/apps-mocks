@@ -5,6 +5,11 @@ import flausch from './flauschhoernchen.png'
 const Div = styled.div`
   text-align: center;
   
+  img {
+    width: 100%;
+    max-width: 100%;
+  }
+  
   .shadow {
     margin: auto;
     width: 30%;
@@ -17,7 +22,7 @@ const Div = styled.div`
 const Flauschhoernchen = () => {
   return (
     <Div>
-      <img src={flausch} style={{ width: '50vw'}} alt="Flauschhörnchen"/>
+      <img src={flausch} alt="Flauschhörnchen"/>
       <div className="shadow">&nbsp;</div>
     </Div>
   )

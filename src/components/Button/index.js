@@ -25,7 +25,7 @@ const Div = styled.div`
   justify-content: center;
 
   font-size: 13px;
-  height: 32px;
+  height: 26px;
   min-width: 80px;
   
   border: solid 1px ${is('isOnDark', colors.highlight, colors.primary)};
@@ -57,7 +57,7 @@ const Div = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 24px;
+    padding: 0 12px;
     box-sizing: border-box;
     
     &:hover {

@@ -47,9 +47,9 @@ const Div = styled.div`
   }
 `;
 
-const Tabs = ({ children }) => {
+const Tabs = ({ children, initialTab = 0 }) => {
 
-  const [activeTab, setActiveTab] = React.useState(0);
+  const [activeTab, setActiveTab] = React.useState(initialTab);
 
   const tabs = children.map(child => child.props.tabName);
   const child =  children[activeTab];
