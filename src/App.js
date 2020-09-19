@@ -75,16 +75,32 @@ function App() {
           <Button>Zurücksetzen</Button>
           <Button primary >Speichern</Button>
         </Breadcrumb>
-        <Tabs initialTab={0}>
+        <Tabs initialTab={4}>
           <Container tabName="Inbox" narrow>
             <h1>Inbox</h1>
             <TableCard length={3}/>
             <TableCard length={10} type={1}/>
           </Container>
+          <Container tabName="Inbox Localization" narrow>
+            <h1>Localization Inbox</h1>
+            <TableCard length={23} filter/>
+          </Container>
           <Container tabName="Inbox Full Width">
             <h1>Inbox</h1>
             <TableCard length={3}/>
             <TableCard length={10} type={1}/>
+          </Container>
+          <Container tabName="My" narrow>
+            <h2>My Localization</h2>
+            <TableCard length={20} bucket={1} filter/>
+            <h2>My Publication</h2>
+            <TableCard length={20} bucket={1} type={1} filter/>
+          </Container>
+          <Container tabName="Archive" narrow>
+            <h2>Archive Localization</h2>
+            <TableCard length={10} bucket={2} filter/>
+            <h2>Archive Publication</h2>
+            <TableCard length={10} bucket={2} type={1} filter/>
           </Container>
           <Container tabName="Campaign">
             <h1 contentEditable={true}>Bi-weekly Homepage Campaign w/c 3.9.2020</h1>

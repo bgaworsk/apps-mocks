@@ -7,6 +7,9 @@ import mockData from './MOCK_DATA.json'
 import SearchIcon from './search_16'
 import Remove from './remove-small'
 import Arrow from './up-and-down-arrows-triangles-svgrepo-com'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLanguage ,faSync, faDiceThree, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
+import datetime from 'luxon/src/datetime'
 
 const Div = styled.div`
 
@@ -41,6 +44,7 @@ const Div = styled.div`
     justify-content: space-between;
     column-gap: 30px;
     margin: 0 30px;
+    height: 36px
   }
 `;
 
@@ -96,7 +100,6 @@ const Table = styled.table`
       cursor: pointer;
     }
  
-    
     tr:nth-child(odd) {
       //background-color: rgba(246,246,246,.7);
     }
@@ -106,13 +109,22 @@ const Table = styled.table`
       line-height: 24px;
     
       &:first-child {
-        width: 50%;
         padding-left: 30px;
+        width: 50%; 
+      }
+    
+      &.type {
+        display: flex;
+        align-items: center;
+        grid-gap: 18px;
+              
+        svg {
+          font-size: 19px;
+        }
       }
       
       &:last-child {
         padding-right: 30px;
-        width: 16px;
         
         svg {
           width: 16px;
@@ -271,7 +283,30 @@ const TextSearch = ({ searchTerm, setSearchTerm }) => {
   )
 }
 
-const TableCard = ({ length, type = 0 }) => {
+const Filter = ({ filter }) => {
+  if (filter === true) {
+    return '';
+  }
+  return (
+    <div>Filter</div>
+  )
+}
+
+const typeToIcon = {
+  'Translation': faLanguage,
+  'Synchronization': faSync,
+  'Four-eye Approval': faThumbsUp,
+  'Three Step': faDiceThree,
+}
+
+const allowedStatus = [
+  ['New', 'Returned'],
+  ['In Approval', 'In Translation', 'In Review', 'Returned', 'Escalated'],
+  ['Aborted', 'Completed'],
+  ['In Approval', 'In Translation', 'In Review', 'Escalated', 'Aborted', 'Completed', 'Returned']
+]
+
+const TableCard = ({ length, type = 0, filter = false, bucket = 0 }) => {
 
   const [data, setData] = React.useState();
   const [filteredData, setFilteredData] = React.useState();
@@ -279,10 +314,10 @@ const TableCard = ({ length, type = 0 }) => {
 
   React.useEffect(() => {
     shuffle(mockData);
-    let slice = mockData.slice(0, length)
+    let slice = mockData.filter(datum => allowedStatus[bucket].includes(type === 0 ? datum.status_localization : datum.status_publication)).slice(0, length);
     setData(slice);
     setFilteredData(slice);
-  }, [length]);
+  }, [length, bucket, type]);
 
   React.useEffect(() => {
     if (searchTerm === '') {
@@ -296,15 +331,22 @@ const TableCard = ({ length, type = 0 }) => {
     <Card table>
       <Div>
         <div className="title">
-          <h2>{type === 0 ? 'Localization' : 'Publication'} Workflows</h2>
+          {!filter && <h2>{type === 0 ? 'Localization' : 'Publication'} Workflows</h2>}
+          {filter && <Filter filter={filter}/>}
           <TextSearch searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
         </div>
         {filteredData && <Table>
           <thead>
             <tr>
               <th>Name <Arrow /></th>
-              <th>Type <Arrow /></th>
+              <th>{type === 0 ? 'Target' : 'Site'} <Arrow /></th>
               <th>Status <Arrow /></th>
+              <th>
+                {bucket === 0 && 'Started'}
+                {bucket === 1 && 'Last Transition'}
+                {bucket === 2 && 'Ended'}
+                <Arrow />
+              </th>
               <th>&nbsp;</th>
             </tr>
           </thead>
@@ -313,10 +355,41 @@ const TableCard = ({ length, type = 0 }) => {
             <tr key={index}>
               <td>
                 <strong style={{fontSize: '17px'}}>{datum.name}</strong><br/>
-                Started by {datum.started_by}
+                {bucket === 0 && (<>From {datum.started_by}</>)}
+                {bucket === 1 && (<>Assigned to {datum.assignee}</>)}
+                {bucket === 2 && (
+                  <>
+                    Started
+                    on {datetime.fromMillis(parseInt(datum.started_at)).toLocaleString()}&nbsp;
+                    at {datetime.fromMillis(parseInt(datum.started_at)).toLocaleString(datetime.TIME_24_SIMPLE)}<br />
+                    by {datum.started_by}
+                  </>
+                )}
               </td>
-              <td>{type === 0 ? datum.type_localization : datum.type_publication}</td>
-              <td>{type === 0 ? datum.status_publication : datum.status_publication}</td>
+              <td className="type">
+                <FontAwesomeIcon icon={typeToIcon[type === 0 ? datum.type_localization : datum.type_publication]}
+                      title={type === 0 ? datum.type_localization : datum.type_publication}
+                />
+                <div>
+                  {type === 0 && (
+                    <>
+                      <strong>{datum.target_locale_1.toLowerCase()}-{datum.target_locale_2}</strong><br />
+                      {datum.site}
+                    </>
+                  )}
+                  {type !== 0 && (
+                    <>
+                      <strong>{datum.site}</strong><br />
+                      {datum.target_locale_1.toLowerCase()}-{datum.target_locale_2}
+                    </>
+                  )}
+                </div>
+              </td>
+              <td>{type === 0 ? datum.status_localization : datum.status_publication}</td>
+              <td>
+                {datetime.fromMillis(parseInt(datum.started_at)).toLocaleString()}<br/>
+                {datetime.fromMillis(parseInt(datum.started_at)).toLocaleString(datetime.TIME_24_SIMPLE)}
+              </td>
               <td><More /></td>
             </tr>
           ))}
