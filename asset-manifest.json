@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.js": "/apps-mocks/static/js/main.c5dbd7df.chunk.js",
-    "main.js.map": "/apps-mocks/static/js/main.c5dbd7df.chunk.js.map",
+    "main.js": "/apps-mocks/static/js/main.a2184b83.chunk.js",
+    "main.js.map": "/apps-mocks/static/js/main.a2184b83.chunk.js.map",
     "runtime-main.js": "/apps-mocks/static/js/runtime-main.380d59d9.js",
     "runtime-main.js.map": "/apps-mocks/static/js/runtime-main.380d59d9.js.map",
-    "static/js/2.2549a774.chunk.js": "/apps-mocks/static/js/2.2549a774.chunk.js",
-    "static/js/2.2549a774.chunk.js.map": "/apps-mocks/static/js/2.2549a774.chunk.js.map",
+    "static/js/2.f4ef66cf.chunk.js": "/apps-mocks/static/js/2.f4ef66cf.chunk.js",
+    "static/js/2.f4ef66cf.chunk.js.map": "/apps-mocks/static/js/2.f4ef66cf.chunk.js.map",
     "index.html": "/apps-mocks/index.html",
-    "precache-manifest.4cdaf0052377d512eced6313682bc703.js": "/apps-mocks/precache-manifest.4cdaf0052377d512eced6313682bc703.js",
+    "precache-manifest.8c7c5f1a7671b3d17a67b2a1f98d34a5.js": "/apps-mocks/precache-manifest.8c7c5f1a7671b3d17a67b2a1f98d34a5.js",
     "service-worker.js": "/apps-mocks/service-worker.js",
-    "static/js/2.2549a774.chunk.js.LICENSE.txt": "/apps-mocks/static/js/2.2549a774.chunk.js.LICENSE.txt",
+    "static/js/2.f4ef66cf.chunk.js.LICENSE.txt": "/apps-mocks/static/js/2.f4ef66cf.chunk.js.LICENSE.txt",
     "static/media/burger-icon.svg": "/apps-mocks/static/media/burger-icon.7082a802.svg",
     "static/media/flauschhoernchen.png": "/apps-mocks/static/media/flauschhoernchen.c0dea19c.png"
   },
   "entrypoints": [
     "static/js/runtime-main.380d59d9.js",
-    "static/js/2.2549a774.chunk.js",
-    "static/js/main.c5dbd7df.chunk.js"
+    "static/js/2.f4ef66cf.chunk.js",
+    "static/js/main.a2184b83.chunk.js"
   ]
 }
