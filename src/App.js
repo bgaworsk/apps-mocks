@@ -9,6 +9,7 @@ import Container from './components/Container'
 import Flauschhoernchen from './components/Flauschhoernchen'
 import TableCard from './components/TableCard'
 import Toolbar from './components/Toolbar'
+import ContentCard from './components/ContentCard'
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -78,7 +79,7 @@ function App() {
           <Button>Zurücksetzen</Button>
           <Button primary >Speichern</Button>
         </Breadcrumb>
-        <Tabs initialTab={0}>
+        <Tabs initialTab={6}>
           <Container tabName="Inbox" narrow>
             <h1>Inbox</h1>
             <TableCard length={14} type={0} bucket={0} filter={2}/>
@@ -105,6 +106,9 @@ function App() {
           <Container tabName="With Toolbar" narrow>
             <h2>Watching Localization</h2>
             <TableCard length={20} bucket={1} filter={1} toolbar/>
+          </Container>
+          <Container tabName="Content" narrow>
+            <ContentCard length={20} toolbar/>
           </Container>
           <Container tabName="Campaign">
             <h1 contentEditable={true}>Bi-weekly Homepage Campaign w/c 3.9.2020</h1>
