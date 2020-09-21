@@ -14,13 +14,30 @@ import Switch from "react-switch";
 import Toolbar from '../Toolbar'
 
 const Div = styled.div`
-  
   .title {
     display: flex;
     justify-content: space-between;
     column-gap: 30px;
     margin: 0 30px;
     height: 36px;
+    
+    .switch {
+      display: flex;
+      align-items: center;
+      grid-gap: 12px;
+      
+      select {
+        padding: 0 12px;
+        height: 34px;
+        border: none;
+        background-color: #e7e7e7;
+        border-radius:  16px;
+        
+        &:focus {
+          outline: none;
+        }
+      }
+    }    
     
     .switch label {
       display: flex;
@@ -82,7 +99,7 @@ const Table = styled.table`
       
       strong {
         font-size: 13px;
-        letter-spacing: 0.2px;
+        //letter-spacing: 0.2px;
       }  
     }
     
@@ -113,6 +130,9 @@ const Table = styled.table`
     
       &:first-child {
         padding-left: 30px;
+      }
+      
+      &.name {
         width: 50%; 
       }
     
@@ -279,7 +299,7 @@ const More = () => {
 
 const TextSearch = ({ searchTerm, setSearchTerm }) => {
 
-  const [expanded, toggle] = React.useState(false);
+  const [expanded, toggle] = React.useState(true);
   const input = React.useRef();
 
   React.useEffect(() => {
@@ -314,19 +334,56 @@ const TextSearch = ({ searchTerm, setSearchTerm }) => {
   )
 }
 
-const Filter = ({ filter }) => {
+const Filter = ({ filter, typeFilter, setTypeFilter }) => {
 
   const [checked, toggle] = React.useState(false);
+  const [checked2, toggle2] = React.useState(false);
 
   if (filter === true) {
     return '';
   }
 
-  return (
+  if (filter === 1) return (
     <div className="switch">
       <label>
         <Switch onChange={() => toggle(v => !v)} checked={checked} uncheckedIcon={false} checkedIcon={false} height={24} width={48}/>
         <span>Show mine only</span>
+      </label>
+    </div>
+  )
+
+  if (filter === 2) return (
+    <div className="switch">
+      <div>Type</div>
+      <select value={typeFilter} onChange={e => setTypeFilter(e.target.value)}>
+        <option value={''}>All</option>
+        <option value={'localization'}>Localization</option>
+        <option value={'publication'}>Publication</option>
+      </select>
+    </div>
+  )
+
+  if (filter === 3) return (
+    <div className="switch">
+      <label>
+        <div>Type</div>
+        <select value={typeFilter} onChange={e => setTypeFilter(e.target.value)}>
+          <option value={''}>All</option>
+          <option value={'localization'}>Localization</option>
+          <option value={'publication'}>Publication</option>
+        </select>
+      </label>
+      <label>
+        <div>Show</div>
+        <select>
+          <option value={'Participated'}>Participated</option>
+          <option value={'Mine'}>Mine</option>
+          <option value={'Any'}>All</option>
+        </select>
+      </label>
+      <label>
+        <span>Include Completed</span>
+        <Switch onChange={() => toggle2(v => !v)} checked={checked2} uncheckedIcon={false} checkedIcon={false} height={24} width={48}/>
       </label>
     </div>
   )
@@ -343,8 +400,13 @@ const allowedStatus = [
   ['New', 'Returned'],
   ['In Approval', 'In Translation', 'In Review', 'Returned', 'Escalated'],
   ['Aborted', 'Completed'],
-  ['In Approval', 'In Translation', 'In Review', 'Escalated', 'Aborted', 'Completed', 'Returned']
+  ['In Approval', 'In Translation', 'In Review', 'Escalated', 'Aborted', 'Completed', 'Returned'],
+  ['New','In Approval', 'In Translation', 'In Review', 'Escalated', 'Aborted', 'Completed', 'Returned']
 ]
+
+const charSum = str => str.split('').reduce((acc, curr) => acc + curr.charCodeAt(0), 0);
+
+const isOdd = str => charSum(str) % 2 === 0;
 
 const TableCard = ({ length, type = 0, filter = false, bucket = 0, toolbar = false }) => {
 
@@ -352,21 +414,26 @@ const TableCard = ({ length, type = 0, filter = false, bucket = 0, toolbar = fal
   const [filteredData, setFilteredData] = React.useState();
   const [searchTerm, setSearchTerm] = React.useState('');
   const [selected, setSelected] = React.useState([]);
+  const [typeFilter, setTypeFilter] = React.useState('');
 
   React.useEffect(() => {
     shuffle(mockData);
-    let slice = mockData.filter(datum => allowedStatus[bucket].includes(type === 0 ? datum.status_localization : datum.status_publication)).slice(0, length);
+    let slice = mockData.filter(datum => allowedStatus[bucket].includes(isOdd(datum.name) ? datum.status_localization : datum.status_publication)).slice(0, length);
     setData(slice);
     setFilteredData(slice);
   }, [length, bucket, type]);
 
   React.useEffect(() => {
+    // Filter first
+    const fData = typeFilter === '' ? data : data.filter(datum => (isOdd(datum.name) && typeFilter === 'localization') || (!isOdd(datum.name) && typeFilter === 'publication'));
+
+    // Then search
     if (searchTerm === '') {
-      setFilteredData(data);
+      setFilteredData(fData);
     } else {
-      setFilteredData(data.filter(datum => datum.name.includes(searchTerm)));
+      setFilteredData(fData.filter(datum => datum.name.includes(searchTerm)));
     }
-  }, [searchTerm, data]);
+  }, [searchTerm, data, typeFilter]);
 
   const toggleSelection = index => {
     // Off
@@ -384,7 +451,7 @@ const TableCard = ({ length, type = 0, filter = false, bucket = 0, toolbar = fal
       <Div>
         <div className="title">
           {!filter && <h2>{type === 0 ? 'Localization' : 'Publication'} Workflows</h2>}
-          {filter && <Filter filter={filter}/>}
+          {filter && <Filter filter={filter} typeFilter={typeFilter} setTypeFilter={setTypeFilter}/>}
           <TextSearch searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
         </div>
         {filteredData && <>
@@ -392,13 +459,15 @@ const TableCard = ({ length, type = 0, filter = false, bucket = 0, toolbar = fal
         <Table>
           <thead>
             <tr>
+              <th>Type</th>
               <th>Name <Arrow /></th>
-              <th>{type === 0 ? 'Target' : 'Site'} <Arrow /></th>
               <th>Status <Arrow /></th>
+              <th>Site<Arrow /></th>
               <th>
                 {bucket === 0 && 'Started'}
                 {bucket === 1 && 'Last Transition'}
                 {bucket === 2 && 'Ended'}
+                {bucket === 4 && 'Last Action'}
                 <Arrow />
               </th>
               <th>&nbsp;</th>
@@ -407,7 +476,12 @@ const TableCard = ({ length, type = 0, filter = false, bucket = 0, toolbar = fal
           <tbody>
           {filteredData.map((datum, index) => (
             <tr key={index} className={classNames({ selected: selected.includes(index)})} onClick={() => toggleSelection(index)}>
-              <td>
+              <td className="type">
+                <FontAwesomeIcon icon={typeToIcon[isOdd(datum.name) ? datum.type_localization : datum.type_publication]}
+                                 title={isOdd(datum.name) ? datum.type_localization : datum.type_publication}
+                />
+              </td>
+              <td className={'name'}>
                 <strong style={{fontSize: '17px'}}>{datum.name}</strong><br/>
                 {bucket === 0 && (<>From {datum.started_by}</>)}
                 {bucket === 1 && (<>Assigned to {datum.assignee}</>)}
@@ -419,29 +493,31 @@ const TableCard = ({ length, type = 0, filter = false, bucket = 0, toolbar = fal
                     by {datum.started_by}
                   </>
                 )}
+                {bucket === 4 && (
+                  <>
+                    Started by {datum.started_by}<br />
+                    Assigned to {datum.assignee}
+                  </>
+                )}
               </td>
-              <td className="type">
+              <td>{isOdd(datum.name) ? datum.status_localization : datum.status_publication}</td>
+              <td>
                 <div>
-                  <FontAwesomeIcon icon={typeToIcon[type === 0 ? datum.type_localization : datum.type_publication]}
-                                   title={type === 0 ? datum.type_localization : datum.type_publication}
-                  />
-                  <div>
-                    {type === 0 && (
-                      <>
-                        <strong>{datum.target_locale_1.toLowerCase()}-{datum.target_locale_2}</strong><br />
-                        {datum.site}
-                      </>
-                    )}
-                    {type !== 0 && (
-                      <>
-                        <strong>{datum.site}</strong><br />
-                        {datum.target_locale_1.toLowerCase()}-{datum.target_locale_2}
-                      </>
-                    )}
-                  </div>
+                  {isOdd(datum.name) && (
+                    <>
+                      <strong>{datum.site}</strong><br />
+                      From: {datum.target_locale_2.toLowerCase()}-{datum.target_locale_1}<br />
+                      To: {datum.target_locale_1.toLowerCase()}-{datum.target_locale_2}
+                    </>
+                  )}
+                  {!isOdd(datum.name) && (
+                    <>
+                      <strong>{datum.site}</strong><br />
+                      {datum.target_locale_1.toLowerCase()}-{datum.target_locale_2}
+                    </>
+                  )}
                 </div>
               </td>
-              <td>{type === 0 ? datum.status_localization : datum.status_publication}</td>
               <td>
                 {datetime.fromMillis(parseInt(datum.started_at)).toLocaleString()}<br/>
                 {datetime.fromMillis(parseInt(datum.started_at)).toLocaleString(datetime.TIME_24_SIMPLE)}

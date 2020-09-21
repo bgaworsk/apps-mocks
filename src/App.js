@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
     //background-color: #006cae;
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     color: #fff;
   }
 `
@@ -24,6 +24,7 @@ const GlobalStyle = createGlobalStyle`
 const Div = styled.div`
   @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
 
   display: flex;
   align-content: flex-start;
@@ -31,9 +32,9 @@ const Div = styled.div`
   flex-direction: column;
   height: 100vh;
   width:  100vw;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 15px;
-  letter-spacing: 0.3px;
+  //letter-spacing: 0.3px;
   overflow: hidden;
   box-sizing: border-box;
   
@@ -80,8 +81,11 @@ function App() {
         <Tabs initialTab={0}>
           <Container tabName="Inbox" narrow>
             <h1>Inbox</h1>
-            <TableCard length={3}/>
-            <TableCard length={10} type={1}/>
+            <TableCard length={14} type={0} bucket={0} filter={2}/>
+          </Container>
+          <Container tabName="All" narrow>
+            <h1>All Workflows</h1>
+            <TableCard length={10} bucket={4} filter={3}/>
           </Container>
           <Container tabName="Inbox Localization" narrow>
             <h1>Localization Inbox</h1>
@@ -101,12 +105,6 @@ function App() {
           <Container tabName="With Toolbar" narrow>
             <h2>Watching Localization</h2>
             <TableCard length={20} bucket={1} filter={1} toolbar/>
-          </Container>
-          <Container tabName="Archive" narrow>
-            <h2>Archive Localization</h2>
-            <TableCard length={10} bucket={2} filter/>
-            <h2>Archive Publication</h2>
-            <TableCard length={10} bucket={2} type={1} filter/>
           </Container>
           <Container tabName="Campaign">
             <h1 contentEditable={true}>Bi-weekly Homepage Campaign w/c 3.9.2020</h1>

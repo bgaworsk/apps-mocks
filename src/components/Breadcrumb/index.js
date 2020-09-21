@@ -36,7 +36,7 @@ const Div = styled.div`
     }
     
     li:last-child {
-      color: #006cae;
+      font-weight: bold;
     }
   }
 `;
@@ -45,9 +45,7 @@ const Breadcrumb = ({ children }) => {
   return (
     <Div>
       <ul>
-        <li>Campaigns</li>
-        <li className="arrow"><Arrow /></li>
-        <li>Bi-weekly Homepage Campaign w/c 3.9. 2020</li>
+        <li>Workflows</li>
       </ul>
       <div>
         {children}

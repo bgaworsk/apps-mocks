@@ -27,7 +27,7 @@ const Div = styled.div`
   font-size: 15px;
   height: 32px;
   min-width: 80px;
-  letter-spacing: 0.3px;
+  //letter-spacing: 0.3px;
   
   border: solid 1px ${is('isOnDark', colors.highlight, colors.primary)};
   border-radius: 4px;
