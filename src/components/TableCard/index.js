@@ -10,41 +10,23 @@ import Arrow from './up-and-down-arrows-triangles-svgrepo-com'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLanguage ,faSync, faDiceThree, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 import datetime from 'luxon/src/datetime'
+import Switch from "react-switch";
+import Toolbar from '../Toolbar'
 
 const Div = styled.div`
-
-  button {
-    cursor: pointer;
-    border: none;
-    background-color: transparent;
-    width: 24px;
-    height: 24px;
-    padding: 0;
-    color: #767676;
-    border-radius: 24px;
-    opacity: 0;
-    
-    &:hover {
-      background-color: rgba(0,0,0,.1);
-      color: #3f3f3f;
-    }
-    
-    &:focus {
-      outline: none;
-    }
-    
-    &.pressed {
-      background-color: #3f3f3f;
-      color: #ffffff;
-    }
-  } 
   
   .title {
     display: flex;
     justify-content: space-between;
     column-gap: 30px;
     margin: 0 30px;
-    height: 36px
+    height: 36px;
+    
+    .switch label {
+      display: flex;
+      align-items: center;
+      grid-gap: 12px;
+    }
   }
 `;
 
@@ -94,14 +76,35 @@ const Table = styled.table`
   }
   
   tbody {
-    font-size: 15px;
+  
+  td:first-child {
+      font-size: 13px;
+      
+      strong {
+        font-size: 13px;
+        letter-spacing: 0.2px;
+      }  
+    }
+    
  
     tr {
       cursor: pointer;
-    }
- 
-    tr:nth-child(odd) {
-      //background-color: rgba(246,246,246,.7);
+
+      &:hover {
+        background-color: #D6F0FF;
+        
+        button {
+          opacity: 1;
+        }
+      }
+      
+      &.selected {
+      background-color: #F8DEFF;
+      }
+      
+      &:nth-child(odd) {
+        //background-color: rgba(246,246,246,.7);
+      }
     }
     
     td {
@@ -114,9 +117,13 @@ const Table = styled.table`
       }
     
       &.type {
-        display: flex;
-        align-items: center;
-        grid-gap: 18px;
+        > div {
+          display: flex;
+          align-items: center;
+          align-content: stretch;
+          grid-gap: 18px;
+          height: 100%;
+        }
               
         svg {
           font-size: 19px;
@@ -130,12 +137,32 @@ const Table = styled.table`
           width: 16px;
           height: 16px;
         }
-      }
-    }
-    
-    tr:hover {
-      button {
-        opacity: 1;
+        
+        button {
+          cursor: pointer;
+          border: none;
+          background-color: transparent;
+          width: 24px;
+          height: 24px;
+          padding: 0;
+          color: #767676;
+          border-radius: 24px;
+          opacity: 0;
+          
+          &:hover {
+            background-color: rgba(0,0,0,.1);
+            color: #3f3f3f;
+          }
+          
+          &:focus {
+            outline: none;
+          }
+          
+          &.pressed {
+            background-color: #3f3f3f;
+            color: #ffffff;
+          }
+        } 
       }
     }
   }
@@ -233,6 +260,10 @@ const SearchContainer = styled.div`
   }
 `;
 
+const StyledToolbar = styled(Toolbar)`
+  margin: 24px 0 0 21px;
+`;
+
 function shuffle(array) {
   array.sort(() => Math.random() - 0.5);
 }
@@ -284,11 +315,20 @@ const TextSearch = ({ searchTerm, setSearchTerm }) => {
 }
 
 const Filter = ({ filter }) => {
+
+  const [checked, toggle] = React.useState(false);
+
   if (filter === true) {
     return '';
   }
+
   return (
-    <div>Filter</div>
+    <div className="switch">
+      <label>
+        <Switch onChange={() => toggle(v => !v)} checked={checked} uncheckedIcon={false} checkedIcon={false} height={24} width={48}/>
+        <span>Show mine only</span>
+      </label>
+    </div>
   )
 }
 
@@ -306,11 +346,12 @@ const allowedStatus = [
   ['In Approval', 'In Translation', 'In Review', 'Escalated', 'Aborted', 'Completed', 'Returned']
 ]
 
-const TableCard = ({ length, type = 0, filter = false, bucket = 0 }) => {
+const TableCard = ({ length, type = 0, filter = false, bucket = 0, toolbar = false }) => {
 
   const [data, setData] = React.useState();
   const [filteredData, setFilteredData] = React.useState();
   const [searchTerm, setSearchTerm] = React.useState('');
+  const [selected, setSelected] = React.useState([]);
 
   React.useEffect(() => {
     shuffle(mockData);
@@ -327,6 +368,17 @@ const TableCard = ({ length, type = 0, filter = false, bucket = 0 }) => {
     }
   }, [searchTerm, data]);
 
+  const toggleSelection = index => {
+    // Off
+    if (selected.includes(index)) {
+      setSelected(selected.filter(v => v !== index));
+    }
+    // On
+    else {
+      setSelected([...selected, index]);
+    }
+  }
+
   return (
     <Card table>
       <Div>
@@ -335,7 +387,9 @@ const TableCard = ({ length, type = 0, filter = false, bucket = 0 }) => {
           {filter && <Filter filter={filter}/>}
           <TextSearch searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
         </div>
-        {filteredData && <Table>
+        {filteredData && <>
+        {toolbar && <StyledToolbar />}
+        <Table>
           <thead>
             <tr>
               <th>Name <Arrow /></th>
@@ -352,7 +406,7 @@ const TableCard = ({ length, type = 0, filter = false, bucket = 0 }) => {
           </thead>
           <tbody>
           {filteredData.map((datum, index) => (
-            <tr key={index}>
+            <tr key={index} className={classNames({ selected: selected.includes(index)})} onClick={() => toggleSelection(index)}>
               <td>
                 <strong style={{fontSize: '17px'}}>{datum.name}</strong><br/>
                 {bucket === 0 && (<>From {datum.started_by}</>)}
@@ -367,22 +421,24 @@ const TableCard = ({ length, type = 0, filter = false, bucket = 0 }) => {
                 )}
               </td>
               <td className="type">
-                <FontAwesomeIcon icon={typeToIcon[type === 0 ? datum.type_localization : datum.type_publication]}
-                      title={type === 0 ? datum.type_localization : datum.type_publication}
-                />
                 <div>
-                  {type === 0 && (
-                    <>
-                      <strong>{datum.target_locale_1.toLowerCase()}-{datum.target_locale_2}</strong><br />
-                      {datum.site}
-                    </>
-                  )}
-                  {type !== 0 && (
-                    <>
-                      <strong>{datum.site}</strong><br />
-                      {datum.target_locale_1.toLowerCase()}-{datum.target_locale_2}
-                    </>
-                  )}
+                  <FontAwesomeIcon icon={typeToIcon[type === 0 ? datum.type_localization : datum.type_publication]}
+                                   title={type === 0 ? datum.type_localization : datum.type_publication}
+                  />
+                  <div>
+                    {type === 0 && (
+                      <>
+                        <strong>{datum.target_locale_1.toLowerCase()}-{datum.target_locale_2}</strong><br />
+                        {datum.site}
+                      </>
+                    )}
+                    {type !== 0 && (
+                      <>
+                        <strong>{datum.site}</strong><br />
+                        {datum.target_locale_1.toLowerCase()}-{datum.target_locale_2}
+                      </>
+                    )}
+                  </div>
                 </div>
               </td>
               <td>{type === 0 ? datum.status_localization : datum.status_publication}</td>
@@ -394,7 +450,7 @@ const TableCard = ({ length, type = 0, filter = false, bucket = 0 }) => {
             </tr>
           ))}
           </tbody>
-        </Table>}
+        </Table></>}
       </Div>
     </Card>
   )

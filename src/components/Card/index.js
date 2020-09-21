@@ -16,6 +16,8 @@ const Div = styled.div`
     //background-color: #e7e7e7;
     background-color: #ffffff;
     box-sizing: border-box;
+    font-size: 15px;
+    letter-spacing: .3px;
     
     transition: height 200ms ease-in-out;
     

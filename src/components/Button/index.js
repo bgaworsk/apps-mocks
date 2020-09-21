@@ -24,9 +24,10 @@ const Div = styled.div`
   flex-direction: row;
   justify-content: center;
 
-  font-size: 13px;
-  height: 26px;
+  font-size: 15px;
+  height: 32px;
   min-width: 80px;
+  letter-spacing: 0.3px;
   
   border: solid 1px ${is('isOnDark', colors.highlight, colors.primary)};
   border-radius: 4px;

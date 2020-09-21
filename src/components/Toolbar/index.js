@@ -85,7 +85,7 @@ const Ul = styled.ul`
   }
 `;
 
-const Toolbar = () => {
+const Toolbar = ( props ) => {
 
   const actions = [
     <CreateNewFolder />,
@@ -108,7 +108,7 @@ const Toolbar = () => {
   ]
 
   return (
-    <Ul>
+    <Ul {...props}>
       {actions.map((action, index) => {
         return action === DIVIDER
           ? (

@@ -32,6 +32,8 @@ const Div = styled.div`
   height: 100vh;
   width:  100vw;
   font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.3px;
   overflow: hidden;
   box-sizing: border-box;
   
@@ -75,7 +77,7 @@ function App() {
           <Button>Zurücksetzen</Button>
           <Button primary >Speichern</Button>
         </Breadcrumb>
-        <Tabs initialTab={4}>
+        <Tabs initialTab={0}>
           <Container tabName="Inbox" narrow>
             <h1>Inbox</h1>
             <TableCard length={3}/>
@@ -90,11 +92,15 @@ function App() {
             <TableCard length={3}/>
             <TableCard length={10} type={1}/>
           </Container>
-          <Container tabName="My" narrow>
-            <h2>My Localization</h2>
-            <TableCard length={20} bucket={1} filter/>
-            <h2>My Publication</h2>
-            <TableCard length={20} bucket={1} type={1} filter/>
+          <Container tabName="Watching" narrow>
+            <h2>Watching Localization</h2>
+            <TableCard length={20} bucket={1} filter={1}/>
+            <h2>Watching Publication</h2>
+            <TableCard length={20} bucket={1} type={1} filter />
+          </Container>
+          <Container tabName="With Toolbar" narrow>
+            <h2>Watching Localization</h2>
+            <TableCard length={20} bucket={1} filter={1} toolbar/>
           </Container>
           <Container tabName="Archive" narrow>
             <h2>Archive Localization</h2>
