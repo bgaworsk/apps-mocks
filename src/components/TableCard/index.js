@@ -99,7 +99,7 @@ const Table = styled.table`
       
       strong {
         font-size: 13px;
-        //letter-spacing: 0.2px;
+        letter-spacing: 0.2px;
       }  
     }
     

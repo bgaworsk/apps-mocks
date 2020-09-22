@@ -33,9 +33,10 @@ const Div = styled.div`
   flex-direction: column;
   height: 100vh;
   width:  100vw;
-  font-family: 'DM Sans', sans-serif;
+  //font-family: 'DM Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 15px;
-  //letter-spacing: 0.3px;
+  letter-spacing: 0.3px;
   overflow: hidden;
   box-sizing: border-box;
   

@@ -48,6 +48,11 @@ const Div = styled.div`
       grid-gap: 12px;
     }
   }
+  
+  .scroll-container {
+    height: 773px;
+    overflow-y: scroll;
+  }
 `;
 
 const Table = styled.table`
@@ -290,13 +295,15 @@ const SearchContainer = styled.div`
 `;
 
 const Pagination = styled.div`
-  margin: 18px 30px; 
+  margin: 42px 60px 18px; 
   
   a {   
     user-select: none;
     color: #868686;
     width: 100%;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100%;
     
     &:focus {
@@ -335,12 +342,16 @@ const Pagination = styled.div`
         border-radius: 0;
         cursor: default;
         
+        &:hover {
+          background-color: transparent;
+        }
+        
         a {
           color: #3f3f3f;
           cursor: default;
           
           &:hover {
-            color: #ffffff;
+            color: #3f3f3f;
           }
         }
       }
@@ -451,20 +462,17 @@ const ContentCard = ({ length, type = 0, filter = false, bucket = 0, toolbar = f
 
   // Filter and paginate data
   React.useEffect(() => {
-    let filteredData = data;
-
-    // First search
     if (searchTerm === '') {
-      // Do nothing for now
+      // Paginate
+      setPageCount(data.length / itemsPerPage);
+      const offset = currentPage * itemsPerPage;
+      setFilteredData(data.slice(offset, offset + itemsPerPage));
     } else {
-      filteredData = data.filter(datum => datum.name.includes(searchTerm));
+      setFilteredData(data.filter(datum => datum.name.includes(searchTerm)));
+      setPageCount(-1);
     }
 
-    // Then paginate
-    setPageCount(filteredData.length / itemsPerPage);
-    const offset = currentPage * itemsPerPage;
 
-    setFilteredData(filteredData.slice(offset, offset + itemsPerPage));
 
   }, [searchTerm, data, currentPage]);
 
@@ -484,43 +492,45 @@ const ContentCard = ({ length, type = 0, filter = false, bucket = 0, toolbar = f
   }
 
   return (
-    <Card table>
+    <Card table height={900}>
       <Div>
         <div className="title">
           <h2>Content</h2>
           <TextSearch searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
         </div>
         {toolbar && <StyledToolbar />}
-        <Table>
-          <thead>
-            <tr>
-              <th>Type</th>
-              <th>Name <Arrow /></th>
-              <th>Status <Arrow /></th>
-              <th>&nbsp;</th>
-            </tr>
-          </thead>
-          <tbody>
-          {filteredData.map((datum, index) => (
-            <tr key={index} className={classNames({ selected: selected.includes(index)})} onClick={() => toggleSelection(index)}>
-              <td className="type"><Icon type={datum.type}/></td>
-              <td className={'name'}>{datum.name}</td>
-              <td>{datum.status}</td>
-              <td><More /></td>
-            </tr>
-          ))}
-          </tbody>
-        </Table>
-        <Pagination>
-          <ReactPaginate pageCount={pageCount}
-                         pageRangeDisplayed={12}
-                         marginPagesDisplayed={3}
-                         nextLabel={'>'}
-                         previousLabel={'<'}
-                         onPageChange={handlePageChange}
-                         forcePage={currentPage}
-          />
-        </Pagination>
+        <div className={'scroll-container'}>
+          <Table>
+            <thead>
+              <tr>
+                <th>Type</th>
+                <th>Name <Arrow /></th>
+                <th>Status <Arrow /></th>
+                <th>&nbsp;</th>
+              </tr>
+            </thead>
+            <tbody>
+            {filteredData.map((datum, index) => (
+              <tr key={index} className={classNames({ selected: selected.includes(index)})} onClick={() => toggleSelection(index)}>
+                <td className="type"><Icon type={datum.type}/></td>
+                <td className={'name'}>{datum.name}</td>
+                <td>{datum.status}</td>
+                <td><More /></td>
+              </tr>
+            ))}
+            </tbody>
+          </Table>
+          {pageCount >= 0 && <Pagination>
+            <ReactPaginate pageCount={pageCount}
+                           pageRangeDisplayed={12}
+                           marginPagesDisplayed={3}
+                           nextLabel={'>'}
+                           previousLabel={'<'}
+                           onPageChange={handlePageChange}
+                           forcePage={currentPage}
+            />
+          </Pagination>}
+        </div>
       </Div>
     </Card>
   )
