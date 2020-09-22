@@ -455,11 +455,6 @@ const ContentCard = ({ length, type = 0, filter = false, bucket = 0, toolbar = f
     setFilteredData(mockData);
   }, [length, bucket, type]);
 
-  // Set page to 0, when search term changes
-  React.useEffect(() => {
-    setCurrentPage(0);
-  }, [searchTerm]);
-
   // Filter and paginate data
   React.useEffect(() => {
     if (searchTerm === '') {
@@ -471,9 +466,6 @@ const ContentCard = ({ length, type = 0, filter = false, bucket = 0, toolbar = f
       setFilteredData(data.filter(datum => datum.name.includes(searchTerm)));
       setPageCount(-1);
     }
-
-
-
   }, [searchTerm, data, currentPage]);
 
   const toggleSelection = index => {
