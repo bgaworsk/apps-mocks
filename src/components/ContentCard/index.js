@@ -12,6 +12,9 @@ import iconArticle from './type-article_24.svg'
 import iconTeaser from './type-teaser_24.svg'
 import iconPicture from './type-picture_24.svg'
 import iconPage from './type-page_24.svg'
+import ReactPaginate from 'react-paginate';
+
+const itemsPerPage =  10;
 
 const Div = styled.div`
   .title {
@@ -286,6 +289,74 @@ const SearchContainer = styled.div`
   }
 `;
 
+const Pagination = styled.div`
+  margin: 18px 30px; 
+  
+  a {   
+    user-select: none;
+    color: #868686;
+    width: 100%;
+    text-align: center;
+    height: 100%;
+    
+    &:focus {
+      outline: none;
+    }
+  }
+  
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    
+    li {
+      display: inline-flex;
+      width: 24px;
+      height: 24px;
+      justify-content: center;
+      align-items: center;
+      border-radius: 4px;
+      cursor: pointer;
+      
+           
+      &:hover {
+        background-color: #e7e7e7;
+        
+        a {
+          color: #3f3f3f;
+        }
+      }
+      
+      &.selected {
+        font-weight: bold;   
+        border-bottom: solid 2px #006cae;
+        border-radius: 0;
+        cursor: default;
+        
+        a {
+          color: #3f3f3f;
+          cursor: default;
+          
+          &:hover {
+            color: #ffffff;
+          }
+        }
+      }
+      
+      &.disabled, &.break {
+        cursor: default;
+        background-color: transparent;
+  
+        a { 
+          color: #d2d2d2; 
+        }
+      }
+    }
+  }
+`;
+
 const StyledToolbar = styled(Toolbar)`
   margin: 24px 0 0 21px;
 `;
@@ -350,7 +421,6 @@ const typeToIcon = {
 const Icon = ({ type }) => {
 
   const icon = typeToIcon[type];
-console.log(type,icon);
   if (!icon) return '';
 
   return <div><img src={icon} className={'type-icon'} alt={`Type ${type}`} title={`Type ${type}`}/></div>
@@ -362,22 +432,41 @@ const ContentCard = ({ length, type = 0, filter = false, bucket = 0, toolbar = f
   const [filteredData, setFilteredData] = React.useState([]);
   const [searchTerm, setSearchTerm] = React.useState('');
   const [selected, setSelected] = React.useState([]);
+  const [currentPage, setCurrentPage] = React.useState(0);
+  const [pageCount, setPageCount] = React.useState(0);
 
+  // Effect: Shuffle data and select
   React.useEffect(() => {
     shuffle(mockData);
-    let slice = mockData.slice(0, length);
-    setData(slice);
-    setFilteredData(slice);
+    //let slice = mockData.slice(0, length);
+    //setData(slice);
+    setData(mockData);
+    setFilteredData(mockData);
   }, [length, bucket, type]);
 
+  // Set page to 0, when search term changes
   React.useEffect(() => {
-    // Then search
+    setCurrentPage(0);
+  }, [searchTerm]);
+
+  // Filter and paginate data
+  React.useEffect(() => {
+    let filteredData = data;
+
+    // First search
     if (searchTerm === '') {
-      setFilteredData(data);
+      // Do nothing for now
     } else {
-      setFilteredData(data.filter(datum => datum.name.includes(searchTerm)));
+      filteredData = data.filter(datum => datum.name.includes(searchTerm));
     }
-  }, [searchTerm, data]);
+
+    // Then paginate
+    setPageCount(filteredData.length / itemsPerPage);
+    const offset = currentPage * itemsPerPage;
+
+    setFilteredData(filteredData.slice(offset, offset + itemsPerPage));
+
+  }, [searchTerm, data, currentPage]);
 
   const toggleSelection = index => {
     // Off
@@ -388,6 +477,10 @@ const ContentCard = ({ length, type = 0, filter = false, bucket = 0, toolbar = f
     else {
       setSelected([...selected, index]);
     }
+  }
+
+  const handlePageChange = event => {
+    setCurrentPage(event.selected);
   }
 
   return (
@@ -418,6 +511,16 @@ const ContentCard = ({ length, type = 0, filter = false, bucket = 0, toolbar = f
           ))}
           </tbody>
         </Table>
+        <Pagination>
+          <ReactPaginate pageCount={pageCount}
+                         pageRangeDisplayed={12}
+                         marginPagesDisplayed={3}
+                         nextLabel={'>'}
+                         previousLabel={'<'}
+                         onPageChange={handlePageChange}
+                         forcePage={currentPage}
+          />
+        </Pagination>
       </Div>
     </Card>
   )
