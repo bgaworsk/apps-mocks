@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/apps-mocks/static/js/main.6588a5ed.chunk.js",
-    "main.js.map": "/apps-mocks/static/js/main.6588a5ed.chunk.js.map",
+    "main.js": "/apps-mocks/static/js/main.ac932f4b.chunk.js",
+    "main.js.map": "/apps-mocks/static/js/main.ac932f4b.chunk.js.map",
     "runtime-main.js": "/apps-mocks/static/js/runtime-main.380d59d9.js",
     "runtime-main.js.map": "/apps-mocks/static/js/runtime-main.380d59d9.js.map",
     "static/js/2.35f86ec1.chunk.js": "/apps-mocks/static/js/2.35f86ec1.chunk.js",
     "static/js/2.35f86ec1.chunk.js.map": "/apps-mocks/static/js/2.35f86ec1.chunk.js.map",
     "index.html": "/apps-mocks/index.html",
-    "precache-manifest.71decd821b936b8ce237a81d30a8659a.js": "/apps-mocks/precache-manifest.71decd821b936b8ce237a81d30a8659a.js",
+    "precache-manifest.b83b3d25b41d77f2cec1d480fc21e7d6.js": "/apps-mocks/precache-manifest.b83b3d25b41d77f2cec1d480fc21e7d6.js",
     "service-worker.js": "/apps-mocks/service-worker.js",
     "static/js/2.35f86ec1.chunk.js.LICENSE.txt": "/apps-mocks/static/js/2.35f86ec1.chunk.js.LICENSE.txt",
     "static/media/burger-icon.svg": "/apps-mocks/static/media/burger-icon.7082a802.svg",
@@ -20,6 +20,6 @@
   "entrypoints": [
     "static/js/runtime-main.380d59d9.js",
     "static/js/2.35f86ec1.chunk.js",
-    "static/js/main.6588a5ed.chunk.js"
+    "static/js/main.ac932f4b.chunk.js"
   ]
 }
